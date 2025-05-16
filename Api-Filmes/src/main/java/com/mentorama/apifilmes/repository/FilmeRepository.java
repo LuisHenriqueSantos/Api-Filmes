@@ -7,55 +7,65 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class FilmeRepository {
-    
+
     private static FilmeRepository filmeRepository;
-    
-    public static FilmeRepository getInstance(){
-        if(filmeRepository == null){
+
+    public static FilmeRepository getInstance() {
+        if (filmeRepository == null) {
             filmeRepository = new FilmeRepository();
         }
         return filmeRepository;
     }
-    
+
     private final List<Filme> filmes;
 
     public FilmeRepository() {
         this.filmes = new LinkedList<>();
     }
-    
+
     public List<Filme> findAll() {
         return filmes;
     }
 
     public List<Filme> findAll(String filme) {
         return filmes.stream()
-                .filter(msg -> msg.getNome().contains(filme))
+                .filter(f -> f.getNome().toLowerCase().contains(filme.toLowerCase()))
                 .collect(Collectors.toList());
     }
-    
-    public Filme findById(Integer id){
+
+    public Filme findById(Integer id) {
         return this.filmes.stream()
-                .filter(fil -> fil.getId().equals(id))
+                .filter(f -> f.getId().equals(id))
                 .findFirst()
                 .orElse(null);
     }
 
-    public int cout(){
+    public int count() {
         return filmes.size();
     }
-    
-    public void add(Filme filme){
+
+    public void add(Filme filme) {
         filmes.add(filme);
     }
 
-    public void update(Filme filme){
-        filmes.stream()
-                .filter(fil -> fil.getId().equals(filme.getId()))
-                .forEach(fil -> fil.setNome(filme.getNome()));
+    public void update(Filme filme) {
+        for (int i = 0; i < filmes.size(); i++) {
+            if (filmes.get(i).getId().equals(filme.getId())) {
+                filmes.set(i, filme);
+                return;
+            }
+        }
     }
 
-    public void delete(Integer id){
-        filmes.removeIf(fil -> fil.getId().equals(id));
+    public void delete(Integer id) {
+        filmes.removeIf(f -> f.getId().equals(id));
     }
-    
+
+    public boolean existsByNomeAnoDiretor(String nome, Integer ano, String diretor) {
+        return filmes.stream().anyMatch(f -> 
+                f.getNome().equalsIgnoreCase(nome) && 
+                f.getAno().equals(ano) &&
+                f.getNomeDiretor().equalsIgnoreCase(diretor)
+        );
+    }
 }
