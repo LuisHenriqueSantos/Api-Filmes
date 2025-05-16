@@ -8,6 +8,7 @@ Projeto desenvolvido em Java 21 com Spring Boot, com o objetivo de gerenciar o c
 - Java 21
 - Spring Boot
 - Spring Web
+- Spring DevTools
 - SpringDoc OpenAPI (Swagger)
 - Maven
 
