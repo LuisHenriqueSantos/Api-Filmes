@@ -19,13 +19,14 @@ public class FilmeService implements IFilmeService{
     }
     
     public Filme findById(Integer id){
-        return filmeRepository.fildById(id);
+        return filmeRepository.findById(id);
     }
 
     public Integer add(final Filme filme){
         if(filme.getId() == null){
             filme.setId(filmeRepository.cout() + 1);
         }
+        filmeRepository.add(filme);
         return filme.getId();
     }
 

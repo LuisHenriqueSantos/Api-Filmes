@@ -33,7 +33,7 @@ public class FilmeRepository {
                 .collect(Collectors.toList());
     }
     
-    public Filme fildById(Integer id){
+    public Filme findById(Integer id){
         return this.filmes.stream()
                 .filter(fil -> fil.getId().equals(id))
                 .findFirst()
@@ -42,6 +42,10 @@ public class FilmeRepository {
 
     public int cout(){
         return filmes.size();
+    }
+    
+    public void add(Filme filme){
+        filmes.add(filme);
     }
 
     public void update(Filme filme){
