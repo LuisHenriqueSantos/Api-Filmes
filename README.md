@@ -17,7 +17,7 @@ Projeto desenvolvido em Java 21 com Spring Boot, com o objetivo de gerenciar o c
 - ✅ Cadastro de filmes  
 - ✅ Id do filme deve ser único
 - ✅ A nota do filme deve ser um inteiro entre 1 e 5, não sendo aceitas notas diferentes
-- ✅ O conjunto de nome, ano e diretor deve ser úmico para evitar o cadastro de filmes duplicados
+- ✅ O conjunto de nome, ano e diretor deve ser único para evitar o cadastro de filmes duplicados
 - ✅ Lista todos os filmes cadastrados
 - ✅ Busca de filmes por ID  
 - ✅ Atualização de dados do filme  
